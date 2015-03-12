@@ -6,11 +6,11 @@ import sys
 from setuptools import setup
 
 
-reqs = ['pygit2==0.21.3', 'clint==0.4.1']
+reqs = ['GitPython==0.3.6', 'clint==0.4.1', 'rdflib==4.2.0']
 if (3, 3) > sys.version_info > (3, 0):
     reqs.append('argparse')
 
-long_desc="""
+long_desc = """
 Quince is a version control system for RDF data built on top of Git.
 """
 
@@ -25,7 +25,7 @@ setup(
     license='GPLv3',
     classifiers=(),
     entry_points={
-        'console_scripts' : [
+        'console_scripts': [
             'quince = quince.cli.quince:main'
         ]},
 )

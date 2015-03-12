@@ -3,9 +3,7 @@ __author__ = 'Kal Ahmed'
 import argparse
 import traceback
 
-from . import quince_init
-from . import quince_import
-from . import pprint
+from quince.cli import quince_init, pprint
 from quince.core import repo as repo_lib
 
 VERSION = '0.1.0'
