@@ -2,25 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35e5072d-e175-4b20-92b8-eb5a81d04f76" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/testutils/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quince/core/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quince/core/parsers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/parsing_tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quince/core/qimport.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/repo_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quince/cli/quince_commit.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/__init__.py" afterPath="$PROJECT_DIR$/quince/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/cli/__init__.py" afterPath="$PROJECT_DIR$/quince/cli/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/core/__init__.py" afterPath="$PROJECT_DIR$/quince/core/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/testutils/__init__.py" afterPath="$PROJECT_DIR$/tests/testutils/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/core/exceptions.py" afterPath="$PROJECT_DIR$/quince/core/exceptions.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/core/init.py" afterPath="$PROJECT_DIR$/quince/core/init.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/core/parsers.py" afterPath="$PROJECT_DIR$/quince/core/parsers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/parsing_tests.py" afterPath="$PROJECT_DIR$/tests/parsing_tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/cli/pprint.py" afterPath="$PROJECT_DIR$/quince/cli/pprint.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/core/qimport.py" afterPath="$PROJECT_DIR$/quince/core/qimport.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/quince.iml" afterPath="$PROJECT_DIR$/.idea/quince.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/cli/quince.py" afterPath="$PROJECT_DIR$/quince/cli/quince.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/cli/quince_import.py" afterPath="$PROJECT_DIR$/quince/cli/quince_import.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/cli/quince_init.py" afterPath="$PROJECT_DIR$/quince/cli/quince_init.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quince/core/repo.py" afterPath="$PROJECT_DIR$/quince/core/repo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/repo_tests.py" afterPath="$PROJECT_DIR$/tests/repo_tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -38,10 +42,17 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/quince$Unittest_QuinceParserTests_test_parse_nquads.coverage" NAME="Unittest QuinceParserTests.test_parse_nquads Coverage Results" MODIFIED="1424628717121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/quince$Unittest_LruCacheTests_test_insert.coverage" NAME="Unittest LruCacheTests.test_insert Coverage Results" MODIFIED="1426239542380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/quince$Unittests_in_quince.coverage" NAME="Quince Unit Tests Coverage Results" MODIFIED="1424542490825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/quince$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1426194944215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/quince$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1426242383573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/quince$Unittests_in_repo_tests.coverage" NAME="Unittests in repo_tests Coverage Results" MODIFIED="1426241812440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/quince$Unittest_QuinceStoreTests_test_assert_two_quads_in_same_file.coverage" NAME="Unittest QuinceStoreTests.test_assert_two_quads_in_same_file Coverage Results" MODIFIED="1426234565704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/quince$quince_runner.coverage" NAME="quince_runner (Profiling) Coverage Results" MODIFIED="1426267696200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../quince_test" />
     <SUITE FILE_PATH="coverage/quince$Unittests_in_repo.coverage" NAME="Unittests in repo Coverage Results" MODIFIED="1424542356245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/quince$Unittests_in_parsing.coverage" NAME="Unittests in parsing Coverage Results" MODIFIED="1424537141417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/quince$Quince_setup.coverage" NAME="Quince setup Coverage Results" MODIFIED="1426244018641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/quince$Quince_Import.coverage" NAME="Quince Import Coverage Results" MODIFIED="1426246268647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/quince$quince_runner__Timing_.coverage" NAME="quince_runner (Timing) Coverage Results" MODIFIED="1426345513484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../quince_test" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -49,16 +60,38 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="quince_import.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/quince/cli/quince_import.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.37955347" vertical-offset="0" max-vertical-offset="851">
+                    <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#26#72#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="quince" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="init.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="init.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quince/core/init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+            <state vertical-scroll-proportion="0.099804305" vertical-offset="0" max-vertical-offset="511">
               <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
@@ -68,42 +101,10 @@
       <file leaf-file-name="repo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quince/core/repo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2801" max-vertical-offset="3842">
-              <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="6222">
+              <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
               <folding>
                 <element signature="e#26#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="repo_tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/repo_tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="982" max-vertical-offset="1615">
-              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74904215" vertical-offset="510" max-vertical-offset="1054">
-              <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parsers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quince/core/parsers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="1309">
-              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-              <folding>
-                <element signature="e#26#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,30 +113,20 @@
       <file leaf-file-name="quince.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quince/cli/quince.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="quince_import.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quince/cli/quince_import.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="612">
-              <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="373" max-vertical-offset="884">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
-                <element signature="e#26#72#0" expanded="true" />
+                <element signature="e#26#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup.py">
+      <file leaf-file-name="quince_commit.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quince/cli/quince_commit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="578">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -144,7 +135,7 @@
       <file leaf-file-name="quince_init.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quince/cli/quince_init.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="595">
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="595">
               <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding>
                 <element signature="e#76#85#0" expanded="true" />
@@ -156,10 +147,42 @@
       <file leaf-file-name="qimport.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quince/core/qimport.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="782">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <element signature="e#26#58#0" expanded="true" />
+                <element signature="e#26#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/quince_test/Lib/site-packages/git/repo/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="9129" max-vertical-offset="14246">
+              <caret line="602" column="0" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cmd.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/venv/quince_test/Lib/site-packages/git/cmd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="12053" max-vertical-offset="14790">
+              <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quince_runner.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quince_runner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+              <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+              <folding>
+                <element signature="e#26#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,16 +205,19 @@
         <option value="$PROJECT_DIR$/tests/testutils/__init__.py" />
         <option value="$PROJECT_DIR$/tests/parsing_tests.py" />
         <option value="$PROJECT_DIR$/quince/core/exceptions.py" />
-        <option value="$PROJECT_DIR$/quince/core/qimport.py" />
         <option value="$PROJECT_DIR$/quince/core/init.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/quince/core/parsers.py" />
-        <option value="$PROJECT_DIR$/quince/cli/quince.py" />
         <option value="$PROJECT_DIR$/quince/cli/quince_import.py" />
         <option value="$PROJECT_DIR$/quince/cli/quince_init.py" />
-        <option value="$PROJECT_DIR$/quince/core/repo.py" />
         <option value="$PROJECT_DIR$/tests/repo_tests.py" />
+        <option value="$PROJECT_DIR$/build/lib/quince/cli/quince.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/quince/cli/quince.py" />
+        <option value="$PROJECT_DIR$/quince_runner.py" />
+        <option value="$PROJECT_DIR$/quince/cli/quince_commit.py" />
+        <option value="$PROJECT_DIR$/quince/core/repo.py" />
+        <option value="$PROJECT_DIR$/quince/core/qimport.py" />
       </list>
     </option>
   </component>
@@ -238,28 +264,6 @@
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.4.2 virtualenv at C:\Users\Khalil\venv\quince &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="site-packages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quince" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.4.2 virtualenv at C:\Users\Khalil\venv\quince &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -268,20 +272,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="quince" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quince" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="quince" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,7 +331,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../quince_test" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -360,32 +350,7 @@
       <recent name="D:\Projects\quince\quince\core" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in tests">
-    <configuration default="false" name="Unittests in parsing_tests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="quince" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Projects\quince\tests\parsing_tests.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.quince_runner (Timing)">
     <configuration default="false" name="Unittests in repo_tests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -436,7 +401,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest QuinceParserTests.test_parse_nquads" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittest QuinceStoreTests.test_assert_two_quads_in_same_file" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -447,9 +412,9 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="quince" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/parsing_tests.py" />
-      <option name="CLASS_NAME" value="QuinceParserTests" />
-      <option name="METHOD_NAME" value="test_parse_nquads" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/repo_tests.py" />
+      <option name="CLASS_NAME" value="QuinceStoreTests" />
+      <option name="METHOD_NAME" value="test_assert_two_quads_in_same_file" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -458,7 +423,36 @@
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest LruCacheTests.test_insert" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="quince" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/repo_tests.py" />
+      <option name="CLASS_NAME" value="LruCacheTests" />
+      <option name="METHOD_NAME" value="test_insert" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -467,8 +461,8 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_HOME" value="C:\Users\Khalil\venv\quince\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -649,18 +643,112 @@
       <envs />
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in parsing_tests" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in repo_tests" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest QuinceParserTests.test_parse_nquads" />
+    <configuration default="false" name="Quince setup" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Khalil\venv\quince\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="quince" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup.py" />
+      <option name="PARAMETERS" value="develop" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Quince Import" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PYTHONPATH" value="D:\Projects\quince" />
+        <env name="PYCHARM_HOSTED" value="1" />
+        <env name="PYTHONIOENCODING" value="UTF-8" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Khalil\venv\quince\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <module name="quince" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quince/cli/quince.py" />
+      <option name="PARAMETERS" value="import d:\projects\datasets\service_expenditure.nt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="quince_runner (Timing)" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../quince_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="quince" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quince_runner.py" />
+      <option name="PARAMETERS" value="import d:\projects\datasets\metadata.nt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="quince_runner (Profiling)" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PROFILE" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../quince_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="quince" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quince_runner.py" />
+      <option name="PARAMETERS" value="import d:\projects\datasets\xaa.nt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="8">
+      <item index="0" class="java.lang.String" itemvalue="Python.Quince setup" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Quince Import" />
+      <item index="2" class="java.lang.String" itemvalue="Python.quince_runner (Timing)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.quince_runner (Profiling)" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in repo_tests" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittest QuinceStoreTests.test_assert_two_quads_in_same_file" />
+      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittest LruCacheTests.test_insert" />
     </list>
     <recent_temporary>
       <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest QuinceParserTests.test_parse_nquads" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in repo_tests" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in parsing_tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in repo_tests" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest LruCacheTests.test_insert" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest QuinceStoreTests.test_assert_two_quads_in_same_file" />
       </list>
     </recent_temporary>
   </component>
@@ -698,28 +786,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39932886" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849163" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38478747" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27139366" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38435754" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29278728" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39932886" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39776537" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39932886" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -743,92 +831,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/parsing_tests.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/quince/core/qimport.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/quince/core/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/core/qimport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="221">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#26#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/parsing_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1156">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#26#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/cli/quince.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="850">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/cli/quince_init.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="595">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#76#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/core/init.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/core/repo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="510">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="612">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#48#58#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/cli/pprint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="408">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/quince/cli/quince_import.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
@@ -964,13 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quince/core/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/venv/quince/Lib/site-packages/rdflib/resource.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.473776" vertical-offset="7707" max-vertical-offset="8279">
@@ -1059,9 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="1020">
           <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-          <folding>
-            <element signature="e#26#40#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1076,33 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.36" vertical-offset="0" max-vertical-offset="595">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/core/qimport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#26#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quince/core/init.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="578">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,27 +1088,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="1309">
           <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding>
-            <element signature="e#26#54#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quince/cli/quince.py">
+    <entry file="file://$USER_HOME$/venv/quince/Lib/site-packages/rdflib/namespace.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1700" max-vertical-offset="8636">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quince/cli/quince_import.py">
+    <entry file="file://$PROJECT_DIR$/quince/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="612">
-          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
-          <folding>
-            <element signature="e#26#72#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="1054">
+          <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/cli/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/core/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03256705" vertical-offset="0" max-vertical-offset="522">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/quince_test/Lib/site-packages/rdflib/plugins/parsers/ntriples.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2482" max-vertical-offset="4794">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2822" max-vertical-offset="18972">
+          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/repo_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="2108">
+          <caret line="93" column="103" selection-start-line="93" selection-start-column="103" selection-end-line="93" selection-end-column="103" />
         </state>
       </provider>
     </entry>
@@ -1146,27 +1168,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quince/core/repo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2801" max-vertical-offset="3842">
-          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5274" max-vertical-offset="6222">
+          <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
           <folding>
             <element signature="e#26#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/repo_tests.py">
+    <entry file="file://$USER_HOME$/venv/quince_test/Lib/site-packages/git/cmd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="982" max-vertical-offset="1615">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="12053" max-vertical-offset="14790">
+          <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$USER_HOME$/venv/quince_test/Lib/site-packages/git/repo/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74904215" vertical-offset="510" max-vertical-offset="1054">
-          <caret line="53" column="7" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="9129" max-vertical-offset="14246">
+          <caret line="602" column="0" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/core/qimport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="782">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#26#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/cli/quince.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="373" max-vertical-offset="884">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#26#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+          <folding>
+            <element signature="e#26#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/cli/quince_commit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/core/init.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.099804305" vertical-offset="0" max-vertical-offset="511">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quince/cli/quince_import.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37955347" vertical-offset="0" max-vertical-offset="851">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#26#72#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

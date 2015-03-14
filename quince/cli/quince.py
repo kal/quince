@@ -3,7 +3,7 @@ __author__ = 'Kal Ahmed'
 import argparse
 import traceback
 
-from quince.cli import quince_init, pprint
+from quince.cli import quince_init, quince_import, pprint
 from quince.core import repo as repo_lib
 
 VERSION = '0.1.0'
@@ -19,11 +19,15 @@ def main():
     parser.add_argument(
         '--version', action='version', version='Quince Version: ' + VERSION)
     subparsers = parser.add_subparsers(dest='subcmd_name')
-    sub_cmds = [quince_init]
+    sub_cmds = [quince_init, quince_import]
     for sub_cmd in sub_cmds:
         sub_cmd.parser(subparsers)
 
     args = parser.parse_args()
+    if args.subcmd_name is None:
+        parser.print_help()
+        return ERRORS_FOUND
+
     if args.subcmd_name != 'init' and not repo_lib.git_dir():
         pprint.err(
             'You are not in a Quince repository. To make this directory a repository '

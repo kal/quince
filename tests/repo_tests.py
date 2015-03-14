@@ -7,7 +7,7 @@ import re
 
 from rdflib import Namespace, URIRef
 
-from quince.core.repo import QuinceStore, QUINCE_DEFAULT_GRAPH_IRI
+from quince.core.repo import QuinceStore, QUINCE_DEFAULT_GRAPH_IRI, LRUCache
 
 import testutils
 
@@ -32,6 +32,14 @@ class NQuadRegularExpressionTests(unittest.TestCase):
 
 class StoreTestsBase(unittest.TestCase):
     DEFAULT_GRAPH = URIRef(QUINCE_DEFAULT_GRAPH_IRI)
+
+    def set_root(self, root):
+        self.root = root
+
+    def get_file_path(self, resource_n3):
+        h = hashlib.sha1(resource_n3.encode()).hexdigest()
+        return os.path.join(self.root, h[:2], h[2:])
+
     def assert_file_for_subject(self, resource_n3):
         f = self.get_file_path(resource_n3) + ".nqo"
         self.assertTrue(os.path.exists(f), 'Did not find expected file at {0} for resource {1}'.format(f, resource_n3))
@@ -46,7 +54,7 @@ class StoreTestsBase(unittest.TestCase):
 class QuinceStoreTests(StoreTestsBase):
 
     def setUp(self):
-        self.root = testutils.ensure_empty_dir('QuinceStoreTests')
+        self.set_root(testutils.ensure_empty_dir('QuinceStoreTests'))
         self.store = QuinceStore(self.root)
 
     def test_assert_quad_creates_nqi_and_nqo_files(self):
@@ -71,14 +79,10 @@ class QuinceStoreTests(StoreTestsBase):
         self.assertIn(testutils.make_nquad(EG.s2, EG.p1, EG.o1, StoreTestsBase.DEFAULT_GRAPH), s2_out_lines)
         self.assertIn(testutils.make_nquad(EG.s2, EG.p1, EG.o2, StoreTestsBase.DEFAULT_GRAPH), s2_out_lines)
 
-    def get_file_path(self, resource_n3):
-        h = hashlib.sha1(resource_n3.encode()).hexdigest()
-        return os.path.join(self.root, h[:2], h[2:])
-
 
 class MatchQuadTests(StoreTestsBase):
     def setUp(self):
-        self.root = testutils.ensure_empty_dir('MatchQuadTests')
+        self.set_root(testutils.ensure_empty_dir('MatchQuadTests'))
         self.store = QuinceStore(self.root)
         self.store.assert_quad(EG.s1, EG.p1, EG.o1, EG.g1)
         self.store.assert_quad(EG.s1, EG.p1, EG.o2, EG.g1)
@@ -93,6 +97,22 @@ class MatchQuadTests(StoreTestsBase):
         self.assertIn(expected_nquad, matches)
 
 
+class LruCacheTests(unittest.TestCase):
+    def test_insert(self):
+        cache = LRUCache(capacity=10)
+        cache.set('foo', 1)
+        self.assertTrue('foo' in cache)
+        self.assertFalse('bar' in cache)
+        self.assertEqual(1, cache.get('foo'))
+        self.assertIsNone(cache.get('bar'))
+
+    def test_remove(self):
+        cache = LRUCache(capacity=10)
+        cache.set('foo', 1)
+        self.assertTrue('foo' in cache)
+        cache.drop('foo')
+        self.assertFalse('foo' in cache)
+        self.assertIsNone(cache.get('foo'))
 
 if __name__ == '__main__':
     unittest.main()
