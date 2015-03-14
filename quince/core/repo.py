@@ -169,6 +169,14 @@ class QuinceStore:
         # This option will create files that contain a merge of several hashes
         # return os.path.join(self.root, h[:3])
 
+    def all_quads(self, graphs):
+        filter_regex = None if graphs is None else "|".join(map(lambda x: "(" + re.escape(x) + ")", graphs)) + r"\s*.\s*\n$"
+        for root, dirs, files in os.walk(self.root):
+            for f in filter(lambda x: x.endswith(NQOUT), files):
+                for l in self.update_manager.iter_lines(os.path.join(root, f)):
+                    if filter_regex is None or re.search(filter_regex, l):
+                        yield l
+
     def match_quads_in_file(self, file_path, pattern):
         lines = self.update_manager.iter_lines(file_path)
         return filter(lambda x: re.fullmatch(pattern, x), lines)

@@ -18,6 +18,12 @@ class QuinceNoParserException(QuinceException):
         self.message = "No parser available for the file {0}".format(source)
 
 
+class QuinceNoSerializerException(QuinceException):
+    def __init__(self, fmt):
+        self.format = fmt
+        self.message = "No serializer available for the format '{0}'".format(fmt)
+
+
 class QuincePreconditionFailedException(QuinceException):
     """Raised when an expected triple does not exist in the store, or an unexpected
     triple does exist in the store."""
