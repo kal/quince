@@ -1,6 +1,7 @@
 __author__ = 'Kal Ahmed'
 
 import os.path
+import itertools
 
 import git
 from quince.core.parsers import get_parser
@@ -35,6 +36,6 @@ def git_add_files():
     g = repo_dir()
     repo = git.Repo(g)
     q = os.path.relpath(qdir())
-    untracked = repo.untracked_files
-    quince_files = list(filter(lambda x: x.startswith(q), untracked))
-    repo.index.add(quince_files)
+    untracked = filter(lambda x: x.startswith(q), repo.untracked_files)
+    modified = map(lambda x: x.b_blob, repo.index.diff(None).iter_change_type('M'))
+    repo.index.add(itertools.chain(untracked, modified))
