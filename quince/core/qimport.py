@@ -1,11 +1,8 @@
 __author__ = 'Kal Ahmed'
 
 import os.path
-import itertools
-
-import git
 from quince.core.parsers import get_parser
-from quince.core.repo import repo_dir, qdir, QuinceStore, QuinceTripleSink
+from quince.core.repo import qdir, QuinceStore, QuinceTripleSink, git_add_files
 from quince.core.exceptions import QuinceParseException
 
 SUCCESS = 0
@@ -31,11 +28,4 @@ def import_file(file_path, default_graph=None):
         raise QuinceParseException(file_path, e)
 
 
-def git_add_files():
-    """git-add .quince directory and all of its contents"""
-    g = repo_dir()
-    repo = git.Repo(g)
-    q = os.path.relpath(qdir())
-    untracked = filter(lambda x: x.startswith(q), repo.untracked_files)
-    modified = map(lambda x: x.b_blob, repo.index.diff(None).iter_change_type('M'))
-    repo.index.add(itertools.chain(untracked, modified))
+

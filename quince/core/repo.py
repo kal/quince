@@ -5,6 +5,7 @@ import re
 import bisect
 import collections
 import hashlib
+import itertools
 from enum import Enum
 
 import git
@@ -411,3 +412,13 @@ class LRUCache:
 
     def items(self):
         return self.cache.values()
+
+
+def git_add_files():
+    """git-add .quince directory and all of its contents"""
+    g = repo_dir()
+    repo = git.Repo(g)
+    q = os.path.relpath(qdir())
+    untracked = filter(lambda x: x.startswith(q), repo.untracked_files)
+    modified = map(lambda x: x.b_blob, repo.index.diff(None).iter_change_type('M'))
+    repo.index.add(itertools.chain(untracked, modified))

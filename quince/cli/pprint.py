@@ -12,6 +12,9 @@ def msg(text, p=sys.stdout.write):
     puts('# {0}'.format(text), stream=p)
 
 
+def out(text, p=sys.stdout.write):
+    puts(text, stream=p)
+
 # Error messages
 
 
