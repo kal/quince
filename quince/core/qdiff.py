@@ -1,4 +1,4 @@
-__author__ = 'ahmedk'
+__author__ = 'Kal Ahmed'
 
 import git
 from quince.core.repo import git_dir, QUINCE_DIR
