@@ -16,13 +16,13 @@ def parser(subparsers):
                              help='Report only diffs on RDF statements from the specified named graph.')
     diff_parser.add_argument('-u', '--update',
                              help='Generate the report as a series of SPARQL Update commands',
-                             action='set_true')
+                             action='store_true')
     diff_parser.add_argument('commit',
                              help='Reference to the commit(s) to be diffed',
                              nargs=argparse.REMAINDER)
 
 
 def main(args):
-    diffs = core_diff.generate_diffs(args.commit, args.resource, args.graph, 'sparql' if args.update else 'nquad_diff')
-    for d in diffs:
-        pprint.out(d)
+    diffs = core_diff.generate_diffs(args.commit, args.subject, args.graph, 'sparql' if args.update else 'nquad_diff')
+    pprint.out(diffs.to_string())
+    return

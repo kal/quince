@@ -6,7 +6,7 @@ import sys
 from setuptools import setup
 
 
-reqs = ['GitPython==0.3.6', 'clint==0.4.1', 'rdflib==4.2.0']
+reqs = ['GitPython==0.3.6', 'clint==0.4.1', 'rdflib==4.2.0', 'rfc3987==1.3.4']
 if (3, 3) > sys.version_info > (3, 0):
     reqs.append('argparse')
 

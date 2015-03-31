@@ -18,7 +18,7 @@ INIT_DATA = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data', 'foa
 def ensure_empty_dir(path):
     p = os.path.join('tmp', path)
     if os.path.isdir(p):
-        shutil.rmtree(p)
+        shutil.rmtree(p, onerror=_rmtree_onerror)
     os.makedirs(p)
     return p
 

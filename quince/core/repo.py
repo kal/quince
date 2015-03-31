@@ -4,6 +4,7 @@ import os
 import re
 import bisect
 import collections
+import configparser
 import hashlib
 import itertools
 from enum import Enum
@@ -11,10 +12,10 @@ from enum import Enum
 import git
 import rdflib
 
-from .exceptions import QuincePreconditionFailedException
+from .exceptions import QuincePreconditionFailedException, QuinceNamespaceExistsException, QuinceNoSuchNamespaceException
 
 QUINCE_DIR = '.quince'
-QUINCE_DEFAULT_GRAPH_IRI = rdflib.URIRef('http://networkedplanet.com/quince/.well-known/default-graph')
+QUINCE_DEFAULT_GRAPH_IRI = 'http://networkedplanet.com/quince/.well-known/default-graph'
 NQOUT = '.nqo'
 NQIN = '.nqi'
 
@@ -48,8 +49,15 @@ def qdir():
 
 def init(path):
     git.Repo.init(path)
-    os.mkdir(os.path.join(qdir(), QUINCE_DIR))
-
+    old_wd = os.path.abspath(os.getcwd())
+    try:
+        os.chdir(path)
+        dir_path = qdir()
+        os.mkdir(dir_path)
+        config_path = os.path.join(dir_path, 'config')
+        open(config_path, 'w').close()
+    finally:
+        os.chdir(old_wd)
 
 class UpdateMode(Enum):
     ASSERT = 1
@@ -118,27 +126,71 @@ class QuinceStore:
 
     IRI_MATCH = r'\<[^\>]*\>'
     LITERAL_MATCH = r'"[^"\\]*(?:\\.[^"\\]*)*"(\^\^\<[^\>]*\>)?(@[^\s]*)?'
-    URI_OR_LITERAL_MATCH = IRI_MATCH + r'|' + LITERAL_MATCH
+    URI_OR_LITERAL_MATCH = '(' + IRI_MATCH + '|' + LITERAL_MATCH + ')'
 
     def __init__(self, path, default_graph=None):
         self.root = os.path.abspath(path)
-        self.default_graph = default_graph or QUINCE_DEFAULT_GRAPH_IRI
+        self.default_graph = default_graph or rdflib.URIRef(QUINCE_DEFAULT_GRAPH_IRI)
         self.update_manager = CachingFileManager(10000)
+        self._config = None
+
+    @property
+    def config(self):
+        if self._config is None:
+            self._config = configparser.ConfigParser()
+            self._config.read([os.path.join(self.root, 'config'), os.path.expanduser('~/.quinceconfig')])
+        return self._config
+
+    def add_namespace(self, prefix, iri):
+        config = self.config
+        try:
+            ns_section = config['Namespaces']
+        except KeyError:
+            config.add_section('Namespaces')
+            ns_section = config['Namespaces']
+        if prefix in ns_section:
+            raise QuinceNamespaceExistsException()
+        ns_section[prefix] = iri
+        self._flush_config()
+
+    def remove_namespace(self, prefix):
+        config = self.config
+        try:
+            ns_section = config['Namespaces']
+        except KeyError:
+            # No namespaces section so nothing to remove
+            return
+        if prefix in ns_section:
+            del ns_section[prefix]
+            self._flush_config()
+
+    @property
+    def ns_prefix_mappings(self):
+        try:
+            return self.config['Namespaces']
+        except KeyError:
+            return {}
+
+    def expand_ns_prefix(self, prefix):
+        if prefix in self.config['Namespaces']:
+            return self.config['Namespaces'][prefix]
+        raise QuinceNoSuchNamespaceException()
+
+    def _flush_config(self):
+        with open(os.path.join(self.root, 'config'), 'w') as f:
+            self.config.write(f)
 
     def assert_quad(self, s, p, o, g=None):
         s, p, o = self.skolemize(s, p, o)
         subject_file_path = self.make_file_path(s) + NQOUT
-        object_file_path = self.make_file_path(o) + NQIN
         nq = self.make_nquad(s, p, o, g or self.default_graph)
         self.update_manager.add_line_to_file(subject_file_path, nq)
-        self.update_manager.add_line_to_file(object_file_path, nq)
 
     def retract_quad(self, s, p, o, g=None):
         subject_file_path = self.make_file_path(s) + NQOUT
-        object_file_path = self.make_file_path(o) + NQIN
         nq = self.make_nquad_pattern(s, p, o, g or self.default_graph)
-        self.update_manager.remove_line_from_file(subject_file_path, nq)
-        self.update_manager.remove_line_from_file(object_file_path, nq)
+        print(nq)
+        return self.update_manager.remove_lines_from_file(subject_file_path, nq)
 
     def exists(self, s, p, o, g=None):
         subject_file_path = self.make_file_path(s) + NQOUT
@@ -180,7 +232,7 @@ class QuinceStore:
 
     def match_quads_in_file(self, file_path, pattern):
         lines = self.update_manager.iter_lines(file_path)
-        return filter(lambda x: re.fullmatch(pattern, x), lines)
+        return filter(lambda x: re.match(pattern, x), lines)
 
     @staticmethod
     def make_nquad(s, p, o, g):
@@ -191,7 +243,7 @@ class QuinceStore:
 
     @staticmethod
     def make_nquad_pattern(s, p, o, g):
-        return "{0} {1} {2} {3} .\n".format(
+        return r"{0}\s+{1}\s+{2}\s+{3}\s+.".format(
             QuinceStore.IRI_MATCH if '*' == s else re.escape(s.n3()),
             QuinceStore.IRI_MATCH if '*' == p else re.escape(p.n3()),
             QuinceStore.URI_OR_LITERAL_MATCH if '*' == o else re.escape(o.n3()),
@@ -287,6 +339,20 @@ class SortedSet:
         i = self.index(item)
         del self.list[i]
 
+    def remove_matches(self, pattern):
+        to_delete = []
+        deleted = []
+        for index, item in enumerate(self.list):
+            print(item)
+            if pattern.match(item, ):
+                print('MATCH')
+                to_delete.append(index)
+        to_delete.reverse()
+        for index in to_delete:
+            deleted.append(self.list[index])
+            del self.list[index]
+        return deleted
+
 
 class FileEntry(SortedSet):
     def __init__(self, file_path):
@@ -349,6 +415,11 @@ class CachingFileManager:
         """
         file = self._assert_file(file_path)
         file.remove(line)
+
+    def remove_lines_from_file(self, file_path, pattern):
+        file = self._assert_file(file_path)
+        compiled_pattern = re.compile(pattern)
+        return file.remove_matches(compiled_pattern)
 
     def iter_lines(self, file_path):
         """

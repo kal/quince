@@ -34,3 +34,24 @@ class QuincePreconditionFailedException(QuinceException):
         self.obj = o
         self.graph = g
         self.message = "Precondition failed: {0} for {1} {2} {3} {4}".format(mode, s, p, o, g)
+
+
+class QuinceNamespaceExistsException(QuinceException):
+    """Raised when an attempt is made to overwrite an existing namespace definition
+        in the local quince configuration file."""
+    pass
+
+
+class QuinceNoSuchNamespaceException(QuinceException):
+    """Raised when an attempt is made to retrieve the expansion value for an undefined namespace prefix"""
+
+
+class QuinceArgumentException(QuinceException):
+    def __init__(self, msg):
+        self.message = msg
+
+
+class QuinceMultiException(QuinceException):
+    def __init__(self, inner_exceptions):
+        self.message = 'Multiple errors were raised.'
+        self.inner_exceptions = inner_exceptions

@@ -4,6 +4,7 @@ import re
 from quince.core.repo import QuinceStore
 from quince.core.exceptions import QuinceNoSerializerException
 
+
 class Serializer:
     LINE_REGEX = re.compile(r"(?P<s>" + QuinceStore.IRI_MATCH + r")\s+(?P<p>" + QuinceStore.IRI_MATCH + r")\s+" +
                             r"(?P<o>" + QuinceStore.URI_OR_LITERAL_MATCH + ")\s+" +
