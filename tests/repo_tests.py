@@ -33,9 +33,9 @@ class NQuadRegularExpressionTests(unittest.TestCase):
 
 class InitTests(unittest.TestCase):
 
-    def test_init_file_structure(self):
-        root_path = testutils.ensure_empty_dir('init_test')
-        init(root_path)
+    @testutils.with_working_dir()
+    def test_init_file_structure(self, root_path):
+        init(root_path, init_git=True)
         self.assertTrue(os.path.exists(os.path.join(root_path, '.git')), 'Expected a .git directory to be created')
         self.assertTrue(os.path.exists(os.path.join(root_path, '.quince')),
                         'Expected a .quince directory to be created')
@@ -43,100 +43,103 @@ class InitTests(unittest.TestCase):
                         'Expected a config file inside the .quince directory')
 
 
-class StoreTestsBase(unittest.TestCase):
+class StoreTestsBase(testutils.TestBase):
     DEFAULT_GRAPH = URIRef(QUINCE_DEFAULT_GRAPH_IRI)
 
-    def set_root(self, root):
-        self.root = root
-
-    def get_file_path(self, resource_n3):
+    def get_file_path(self, store, resource_n3):
         h = hashlib.sha1(resource_n3.encode()).hexdigest()
-        return os.path.join(self.root, h[:2], h)
+        return os.path.join(store.root, h[:2], h)
 
-    def assert_file_for_subject(self, resource_n3):
-        f = self.get_file_path(resource_n3) + ".nqo"
+    def assert_file_for_subject(self, store, resource_n3):
+        f = self.get_file_path(store, resource_n3) + ".nqo"
         self.assertTrue(os.path.exists(f), 'Did not find expected file at {0} for resource {1}'.format(f, resource_n3))
         return f
 
 
 class QuinceStoreTests(StoreTestsBase):
 
-    def setUp(self):
-        self.set_root(testutils.ensure_empty_dir('QuinceStoreTests'))
-        init(self.root)
-        self.store = QuinceStore(self.root)
-
-    def test_assert_quad_creates_nqo_file(self):
-        self.store.assert_quad(EG.s1, EG.p1, EG.o1)
-        self.store.flush()
-        s1_out = self.assert_file_for_subject(EG.s1.n3())
+    @testutils.with_store("HEAD")
+    def test_assert_quad_creates_nqo_file(self, store):
+        store.assert_quad(EG.s1, EG.p1, EG.o1)
+        store.flush()
+        s1_out = self.assert_file_for_subject(store, EG.s1.n3())
         s1_out_lines = testutils.get_lines(s1_out)
         expected_nquad = testutils.make_nquad(EG.s1, EG.p1, EG.o1, StoreTestsBase.DEFAULT_GRAPH)
         self.assertIn(expected_nquad, s1_out_lines)
 
-    def test_assert_two_quads_in_same_file(self):
-        self.store.assert_quad(EG.s2, EG.p1, EG.o1)
-        self.store.assert_quad(EG.s2, EG.p1, EG.o2)
-        self.store.flush()
+    @testutils.with_store("HEAD")
+    def test_assert_two_quads_in_same_file(self, store):
+        store.assert_quad(EG.s2, EG.p1, EG.o1)
+        store.assert_quad(EG.s2, EG.p1, EG.o2)
+        store.flush()
 
-        s2_out = self.assert_file_for_subject(EG.s2.n3())
+        s2_out = self.assert_file_for_subject(store, EG.s2.n3())
         s2_out_lines = testutils.get_lines(s2_out)
         self.assertIn(testutils.make_nquad(EG.s2, EG.p1, EG.o1, StoreTestsBase.DEFAULT_GRAPH), s2_out_lines)
         self.assertIn(testutils.make_nquad(EG.s2, EG.p1, EG.o2, StoreTestsBase.DEFAULT_GRAPH), s2_out_lines)
 
-    def test_add_namespace(self):
-        self.store.add_namespace('eg', 'http://example.org/')
+    @testutils.with_store("HEAD")
+    def test_add_namespace(self, store):
+        store.add_namespace('eg', 'http://example.org/')
         config = configparser.ConfigParser()
-        config.read([os.path.join(self.root, '.quince', 'config')])
+        config.read([os.path.join(store.root, 'config')])
         self.assertTrue(config.has_section('Namespaces'))
         self.assertTrue(config.has_option('Namespaces', 'eg'))
         self.assertEqual('http://example.org/', config.get('Namespaces', 'eg'))
-        self.assertEqual('http://example.org/', self.store.expand_ns_prefix('eg'))
+        self.assertEqual('http://example.org/', store.expand_ns_prefix('eg'))
 
-    def test_remove_namespace(self):
-        self.store.add_namespace('eg', 'http://example.org/')
-        self.store.add_namespace('foaf', 'http://xmlns.com/foaf/0.1/')
-        self.store.remove_namespace('eg')
+    @testutils.with_store("HEAD")
+    def test_remove_namespace(self, store):
+        store.add_namespace('eg', 'http://example.org/')
+        store.add_namespace('foaf', 'http://xmlns.com/foaf/0.1/')
+        store.remove_namespace('eg')
         config = configparser.ConfigParser()
-        config.read([os.path.join(self.root, '.quince', 'config')])
+        config.read([os.path.join(store.root, 'config')])
         self.assertTrue(config.has_section('Namespaces'))
         self.assertFalse(config.has_option('Namespaces', 'eg'))
         self.assertTrue(config.has_option('Namespaces', 'foaf'))
 
-    def test_cannot_overwrite_existing_namespace(self):
-        self.store.add_namespace('eg', 'http://example.org/')
+    @testutils.with_store("HEAD")
+    def test_cannot_overwrite_existing_namespace(self, store):
+        store.add_namespace('eg', 'http://example.org/')
         with self.assertRaises(quince_exceptions.QuinceNamespaceExistsException):
-            self.store.add_namespace('eg', 'http://example.com/')
+            store.add_namespace('eg', 'http://example.com/')
 
-    def test_cannot_expand_undefined_namespace(self):
-        self.store.add_namespace('eg', 'http://example.org')
+    @testutils.with_store("HEAD")
+    def test_cannot_expand_undefined_namespace(self, store):
+        store.add_namespace('eg', 'http://example.org')
         with self.assertRaises(quince_exceptions.QuinceNoSuchNamespaceException):
-            self.store.expand_ns_prefix('ex')
+            store.expand_ns_prefix('ex')
 
 
 class MatchQuadTests(StoreTestsBase):
-    def setUp(self):
-        self.set_root(testutils.ensure_empty_dir('MatchQuadTests'))
-        self.store = QuinceStore(self.root)
+
+    def init_store(self, store):
+        self.store = store
         self.store.assert_quad(EG.s1, EG.p1, EG.o1, EG.g1)
         self.store.assert_quad(EG.s1, EG.p1, Literal("123"), EG.g1)
         self.store.flush()
-        self.s1_out = self.assert_file_for_subject(EG.s1.n3())
+        self.s1_out = self.assert_file_for_subject(store, EG.s1.n3())
 
-    def test_match_quad_exact(self):
+    @testutils.with_store("HEAD")
+    def test_match_quad_exact(self, store):
+        self.init_store(store)
         matches = list(self.store.match_quads_in_file(self.s1_out,
                                                       self.store.make_nquad_pattern(EG.s1, EG.p1, EG.o1, EG.g1)))
         expected_nquad = testutils.make_nquad(EG.s1, EG.p1, EG.o1, EG.g1)
         self.assertEqual(1, len(matches))
         self.assertIn(expected_nquad, matches)
 
-    def test_match_quad_wildcard(self):
+    @testutils.with_store("HEAD")
+    def test_match_quad_wildcard(self, store):
+        self.init_store(store)
         matches = list(self.store.match_quads_in_file(self.s1_out, self.store.make_nquad_pattern(EG.s1, '*', '*', '*')))
         self.assertEqual(2, len(matches))
 
-    def test_remove_lines(self):
+    @testutils.with_store("HEAD")
+    def test_remove_lines(self, store):
+        self.init_store(store)
         store_file = FileEntry(self.s1_out)
-        p = self.store.make_nquad_pattern(EG.s1, '*', '*', '*')
         removed = store_file.remove_matches(re.compile(self.store.make_nquad_pattern(EG.s1, '*', '*', '*')))
         self.assertEqual(2, len(removed))
 

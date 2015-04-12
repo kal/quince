@@ -41,7 +41,8 @@ def git_dir():
 
 def repo_dir():
     """Get the full path to the Git repo."""
-    return git_dir()[:-4]
+    g = git_dir()
+    return g[:-4] if g is not None else None
 
 
 def qdir():

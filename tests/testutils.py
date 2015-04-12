@@ -11,6 +11,7 @@ from git.compat import string_types
 
 from quince.core.qimport import import_file
 from quince.core.init import init_cwd
+from quince.core.repo import QuinceStore, QUINCE_DIR
 
 INIT_DATA = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data', 'foaf_sample.nt'))
 
@@ -44,6 +45,29 @@ def _rmtree_onerror(osremove, fullpath, exc_info):
     os.remove(fullpath)
 
 
+def with_working_dir():
+    def argument_passer(func):
+        def directory_creator(self):
+            working_dir = tempfile.mktemp(func.__name__)
+            prev_cwd = os.getcwd()
+            os.makedirs(working_dir)
+            os.chdir(working_dir)
+            try:
+                try:
+                    return func(self, working_dir)
+                except:
+                    print("Keeping temp dir after failure: {0}".format(working_dir), file=sys.stderr)
+                    working_dir = None
+                    raise
+            finally:
+                os.chdir(prev_cwd)
+                if working_dir is not None:
+                    shutil.rmtree(working_dir, onerror=_rmtree_onerror)
+        directory_creator.__name__ = func.__name__
+        return directory_creator
+    return argument_passer
+
+
 def with_rw_repo(working_tree_ref):
     assert isinstance(working_tree_ref, string_types), "Decorator requires ref name for working checkout"
 
@@ -68,6 +92,34 @@ def with_rw_repo(working_tree_ref):
         repo_creator.__name__ = func.__name__
         return repo_creator
     return argument_passer
+
+
+def with_store(working_tree_ref):
+    assert isinstance(working_tree_ref, string_types), "Decorator requires ref name for working checkout"
+
+    def argument_passer(func):
+        def repo_creator(self):
+            repo_dir = tempfile.mktemp(func.__name__)
+            rw_repo = self.rorepo.clone(repo_dir)
+            prev_cwd = os.getcwd()
+            os.chdir(rw_repo.working_dir)
+            store = QuinceStore(os.path.join(rw_repo.working_dir, QUINCE_DIR))
+            try:
+                try:
+                    return func(self, store)
+                except:
+                    print("Keeping repo after failure: {0}".format(repo_dir), file=sys.stderr)
+                    repo_dir = None
+                    raise
+            finally:
+                os.chdir(prev_cwd)
+                rw_repo.git.clear_cache()
+                if repo_dir is not None:
+                    shutil.rmtree(repo_dir, onerror=_rmtree_onerror)
+        repo_creator.__name__ = func.__name__
+        return repo_creator
+    return argument_passer
+
 
 
 class TestBase(unittest.TestCase):

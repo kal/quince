@@ -100,17 +100,18 @@ class SparqlDiffListTests(unittest.TestCase):
                          "}\n"
                          "}", diff.to_string())
 
-    def test_insertions_in_different_graphs_yeilds_separate_graph_clauses(self):
+    def test_insertions_in_different_graphs_yields_separate_graph_clauses(self):
         diff = SparqlDiffList()
         diff.add("+<http://example.org/s> <http://example.org/p> <http://example.org/o> <http://example.org/g> .")
         diff.add("+<http://example.org/s2> <http://example.org/p> <http://example.org/o> <http://example.org/g2> .")
         self.assertTrue(diff.any())
         self.assertEqual(2, len(diff))
-        self.assertEqual(
+        self.assertIn(
             "INSERT DATA {\n"
             "GRAPH <http://example.org/g> {\n"
             "<http://example.org/s> <http://example.org/p> <http://example.org/o> .\n"
-            "}"
+            "}", diff.to_string())
+        self.assertIn(
             "GRAPH <http://example.org/g2> {\n"
             "<http://example.org/s2> <http://example.org/p> <http://example.org/o> .\n"
             "}\n"
