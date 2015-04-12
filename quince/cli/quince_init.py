@@ -21,10 +21,8 @@ def parser(subparsers):
 def main(args):
     ret = core_init.init_cwd()
     if ret is core_init.NOTHING_TO_INIT:
-        pprint.err('Nothing to init, this directory is already a Quince repo')
         return False
     elif ret is core_init.SUCCESS:
-        pprint.msg("Local repo created in '{0}'".format(os.getcwd()))
         return True
     else:
         raise Exception('Unexpected return code {0}'.format(ret))

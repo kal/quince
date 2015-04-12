@@ -1,13 +1,15 @@
 __author__ = 'Kal Ahmed'
 
-import os
-import re
 import bisect
 import collections
 import configparser
+from enum import Enum
+import glob
 import hashlib
 import itertools
-from enum import Enum
+import logging
+import os
+import re
 
 import git
 import rdflib
@@ -47,8 +49,9 @@ def qdir():
     return os.path.join(repo_dir(), QUINCE_DIR)
 
 
-def init(path):
-    git.Repo.init(path)
+def init(path, init_git=False):
+    if init_git:
+        git.Repo.init(path)
     old_wd = os.path.abspath(os.getcwd())
     try:
         os.chdir(path)
@@ -58,6 +61,7 @@ def init(path):
         open(config_path, 'w').close()
     finally:
         os.chdir(old_wd)
+
 
 class UpdateMode(Enum):
     ASSERT = 1
@@ -221,6 +225,28 @@ class QuinceStore:
 
         # This option will create files that contain a merge of several hashes
         # return os.path.join(self.root, h[:3])
+
+    def sort_quads(self, path_iter=None):
+        """
+        Ensure that the contents of the nquads files are in sorted order.
+        :param path_iter: An iterable that yields the paths to each file to be sorted. If not specified
+            an iterator over all of the files in the store will be used.
+        """
+        log = logging.getLogger('quince')
+        path_iter = path_iter or self._iterate_quad_files()
+        visit_count = 0
+        for file_path in path_iter:
+            log.debug(file_path)
+            self.update_manager.touch(file_path)
+            visit_count += 1
+        log.debug('{0} files visited. Writing updates to disk - this may take a while...'.format(visit_count))
+        self.update_manager.flush()
+
+    def _iterate_quad_files(self):
+        """
+        Return an iterator over the nquads files in the repository
+        """
+        return glob.iglob(os.path.join(self.root, '*', '*.nqo'))
 
     def all_quads(self, graphs):
         filter_regex = None if graphs is None else "|".join(map(lambda x: "(" + re.escape(x) + ")", graphs)) + r"\s*.\s*\n$"
@@ -430,6 +456,14 @@ class CachingFileManager:
         """
         file = self._assert_file(file_path)
         return iter(file)
+
+    def touch(self, file_path):
+        """
+        loads the file at the specified file path.
+        :param file_path:
+        :return:
+        """
+        self._assert_file(file_path)
 
     def _assert_file(self, file_path):
         file = self.cache.get(file_path)
