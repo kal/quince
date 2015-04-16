@@ -46,6 +46,16 @@ class QuinceNoSuchNamespaceException(QuinceException):
     """Raised when an attempt is made to retrieve the expansion value for an undefined namespace prefix"""
 
 
+class QuinceRemoteExistsException(QuinceException):
+    def __init__(self, remote_name):
+        self.remote_name = remote_name
+        self.message = 'A remote with the name "' + remote_name + '" already exists.'
+
+class QuinceNoSuchRemoteException(QuinceException):
+    def __init__(self, remote_name):
+        self.remote_name = remote_name
+        self.message = 'No remote with the name "' + remote_name + '".'
+
 class QuinceArgumentException(QuinceException):
     def __init__(self, msg):
         self.message = msg

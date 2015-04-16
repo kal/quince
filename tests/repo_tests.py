@@ -111,6 +111,38 @@ class QuinceStoreTests(StoreTestsBase):
         with self.assertRaises(quince_exceptions.QuinceNoSuchNamespaceException):
             store.expand_ns_prefix('ex')
 
+    @testutils.with_store("HEAD")
+    def test_add_remote(self, store):
+        store.add_remote('test', 'http://example.org/test/sparql')
+        section = store.config['Remote "test"']
+        self.assertIsNotNone(section)
+        self.assertEqual('http://example.org/test/sparql', section['endpoint'])
+
+    @testutils.with_store("HEAD")
+    def test_cannot_add_remote_with_duplicate_name(self, store):
+        store.add_remote('test', 'http://example.org/test/sparql')
+        with self.assertRaises(quince_exceptions.QuinceRemoteExistsException):
+            store.add_remote('test', 'http://test.org/sparql')
+        section = store.config['Remote "test"']
+        self.assertIsNotNone(section)
+        self.assertEqual('http://example.org/test/sparql', section['endpoint'])
+
+    @testutils.with_store("HEAD")
+    def test_remove_remote(self, store):
+        store.add_remote('test', 'http://example.org/test/sparql')
+        store.add_remote('test2', 'http://test.org/sparql')
+        store.remove_remote('test')
+        with self.assertRaises(KeyError):
+            section = store.config['Remote "test"']
+        section = store.config['Remote "test2"']
+        self.assertIsNotNone(section)
+
+    @testutils.with_store("HEAD")
+    def test_remove_nonexistent_remote_raises_nosuchremoteexception(self, store):
+        store.add_remote('test', 'http://example.org/test/sparql')
+        with self.assertRaises(quince_exceptions.QuinceNoSuchRemoteException):
+            store.remove_remote('test2')
+
 
 class MatchQuadTests(StoreTestsBase):
 

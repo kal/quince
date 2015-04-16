@@ -55,6 +55,9 @@ target/
 
 # Test output
 tests/tmp/
-.idea/workspace.xml
-.idea/misc.xml
-.idea/quince.iml
+
+# PyCharm project files
+.idea/
+
+# Ignore any local .quince directory as it would have been created by mistake
+.quince/

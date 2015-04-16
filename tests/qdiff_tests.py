@@ -107,13 +107,11 @@ class SparqlDiffListTests(unittest.TestCase):
         self.assertTrue(diff.any())
         self.assertEqual(2, len(diff))
         self.assertIn(
-            "INSERT DATA {\n"
             "GRAPH <http://example.org/g> {\n"
             "<http://example.org/s> <http://example.org/p> <http://example.org/o> .\n"
             "}", diff.to_string())
         self.assertIn(
             "GRAPH <http://example.org/g2> {\n"
             "<http://example.org/s2> <http://example.org/p> <http://example.org/o> .\n"
-            "}\n"
             "}", diff.to_string())
 

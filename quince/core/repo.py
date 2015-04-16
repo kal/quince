@@ -14,7 +14,8 @@ import re
 import git
 import rdflib
 
-from .exceptions import QuincePreconditionFailedException, QuinceNamespaceExistsException, QuinceNoSuchNamespaceException
+from quince.core.exceptions import QuincePreconditionFailedException, QuinceNamespaceExistsException, \
+    QuinceNoSuchNamespaceException, QuinceRemoteExistsException, QuinceNoSuchRemoteException
 
 QUINCE_DIR = '.quince'
 QUINCE_DEFAULT_GRAPH_IRI = 'http://networkedplanet.com/quince/.well-known/default-graph'
@@ -168,6 +169,42 @@ class QuinceStore:
         if prefix in ns_section:
             del ns_section[prefix]
             self._flush_config()
+
+    def add_remote(self, name, endpoint):
+        """
+        Add a configuration entry for a new remote
+
+        :param name: The remote name
+        :param endpoint: The remote endpoint IRI
+        :raises: QuinceRemoteExistsException if a remote with the specified name already exists
+        """
+        config = self.config
+        section_name = 'Remote "{0}"'.format(name)
+        if section_name in config:
+            raise QuinceRemoteExistsException(name)
+        else:
+            config.add_section(section_name)
+            section = config[section_name]
+            section['endpoint'] = endpoint
+        self._flush_config()
+
+    def remove_remote(self, name):
+        """
+        Remove a configuration entry for a remote
+
+        :param name:
+        :raises: QuinceNoSuchRemoteException if a remote with the specified name does not exist
+        """
+        config = self.config
+        section_name = 'Remote "{0}"'.format(name)
+        try:
+            section = config[section_name]
+        except:
+            raise QuinceNoSuchRemoteException(name)
+        config.remove_section(section_name)
+        remote_file_path = os.path.join(self.root, 'remotes', name)
+        if os.path.exists(remote_file_path):
+            os.remove(remote_file_path)
 
     @property
     def ns_prefix_mappings(self):
