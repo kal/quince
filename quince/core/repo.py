@@ -206,6 +206,18 @@ class QuinceStore:
         if os.path.exists(remote_file_path):
             os.remove(remote_file_path)
 
+    def list_remotes(self):
+        """
+        List the remotes contained in the repository configuration file
+        :return: an iterator over (name, endpoint) tuples
+        """
+        config = self.config
+        for s, proxy in config.items():
+            toks = s.split(' ')
+            if len(toks) == 2 and toks[0] == 'Remote':
+                remote_name = toks[1].strip('"')
+                yield remote_name, proxy['endpoint']
+
     @property
     def ns_prefix_mappings(self):
         try:

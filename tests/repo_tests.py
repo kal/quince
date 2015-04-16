@@ -143,6 +143,20 @@ class QuinceStoreTests(StoreTestsBase):
         with self.assertRaises(quince_exceptions.QuinceNoSuchRemoteException):
             store.remove_remote('test2')
 
+    @testutils.with_store("HEAD")
+    def test_list_remotes(self, store):
+        store.add_remote('test', 'http://example.org/test/sparql')
+        store.add_remote('test2', 'http://test.org/sparql')
+        all_remotes = dict(store.list_remotes())
+        self.assertIn('test', all_remotes)
+        self.assertIn('test2', all_remotes)
+        self.assertEqual('http://example.org/test/sparql', all_remotes['test'])
+        self.assertEqual('http://test.org/sparql', all_remotes['test2'])
+
+    @testutils.with_store("HEAD")
+    def test_list_remotes_when_none_defined(self, store):
+        all_remotes = list(store.list_remotes())
+        self.assertEqual(0, len(all_remotes))
 
 class MatchQuadTests(StoreTestsBase):
 
