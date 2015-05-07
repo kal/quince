@@ -12,6 +12,7 @@ import os
 import re
 
 import git
+import git.cmd
 import rdflib
 
 from quince.core.exceptions import QuincePreconditionFailedException, QuinceNamespaceExistsException, \
@@ -559,9 +560,7 @@ class LRUCache:
 
 def git_add_files():
     """git-add .quince directory and all of its contents"""
-    g = repo_dir()
-    repo = git.Repo(g)
     q = os.path.relpath(qdir())
-    untracked = filter(lambda x: x.startswith(q), repo.untracked_files)
-    modified = map(lambda x: x.b_blob, repo.index.diff(None).iter_change_type('M'))
-    repo.index.add(itertools.chain(untracked, modified))
+    g = git.cmd.Git()
+    g.init()
+    g.add(q)
