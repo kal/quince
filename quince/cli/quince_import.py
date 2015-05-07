@@ -1,5 +1,7 @@
 __author__ = 'Kal Ahmed'
 
+import logging
+
 from quince.core import qimport as core_import
 from quince.core.exceptions import QuinceParseException, QuinceNoParserException
 from quince.cli import pprint
@@ -17,14 +19,15 @@ def parser(subparsers):
 
 
 def main(args):
+    log = logging.getLogger('quince')
     for file in args.filename:
         try:
             core_import.import_file(file, args.default_graph)
-            pprint.msg("'{0}' - OK".format(file))
+            log.info("'{0}' - OK".format(file))
         except QuinceParseException as e:
-            pprint.err("'{0}' - Parser Error: {1}".format(file, e.parser_msg))
+            log.error("'{0}' - Parser Error: {1}".format(file, e.parser_msg))
         except QuinceNoParserException:
-            pprint.err("'{0}' - No parser available for files with this file extension".format(file))
+            log.error("'{0}' - No parser available for files with this file extension".format(file))
 
 
 

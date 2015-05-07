@@ -3,10 +3,9 @@ __author__ = 'Kal Ahmed'
 import os.path
 from quince.core.parsers import get_parser
 from quince.core.repo import qdir, QuinceStore, QuinceTripleSink, git_add_files
-from quince.core.exceptions import QuinceParseException
+from quince.core.exceptions import QuinceParseException, QuinceNoParserException
 
 SUCCESS = 0
-NO_PARSER = 2
 
 
 def import_file(file_path, default_graph=None):
@@ -14,7 +13,7 @@ def import_file(file_path, default_graph=None):
     sink = QuinceTripleSink(store)
     parser = get_parser(file_path, sink)
     if not parser:
-        return NO_PARSER
+        raise QuinceNoParserException(file_path)
     try:
         if os.path.isfile(file_path):
             with open(file_path, 'rb') as f:

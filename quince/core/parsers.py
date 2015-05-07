@@ -8,9 +8,15 @@ from rdflib.plugins.parsers.ntriples import r_tail
 from rdflib.plugins.parsers.ntriples import r_wspace
 from rdflib.util import guess_format
 
+# Extension to format mappings to use in addition to the default ones in rdflib
+ext_map = {
+    'ntriples': 'nt',
+    'nquads': 'nquads'
+}
+
 
 def get_parser(file_path, sink):
-    fmt = guess_format(file_path)
+    fmt = guess_format(file_path) or guess_format(file_path, ext_map)
     if fmt == 'nt':
         return NTriplesParser(sink=sink)
     if fmt == 'nquads':
