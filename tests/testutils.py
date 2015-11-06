@@ -33,16 +33,16 @@ def make_nquad(s, p, o, g):
     return "{0} {1} {2} {3} .\n".format(s.n3(), p.n3(), o.n3(), g.n3())
 
 
-def _rmtree_onerror(osremove, fullpath, exc_info):
+def _rmtree_onerror(func, fullpath, exc_info):
     """
     Handle the case on Windows where readonly files
     cannot be deleted by os.remove by setting it to
     mode 777 then retry deletion
     """
-    if os.name != 'nt' or osremove is not os.remove:
+    if os.name != 'nt':
         raise()
     os.chmod(fullpath, 0o777)
-    os.remove(fullpath)
+    func(fullpath)
 
 
 def with_working_dir():
